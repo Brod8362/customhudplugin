@@ -2,7 +2,7 @@ package pw.byakuren.hudplugin.commands
 
 import org.bukkit.command.CommandSender
 
-trait Command {
+trait PluginCommand {
 
   def name: String
 

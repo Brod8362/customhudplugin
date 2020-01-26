@@ -11,7 +11,7 @@ import scala.jdk.CollectionConverters._
 
 class HUDUpdater(implicit segments: Seq[HUDSegment]) extends Runnable {
 
-  val standardString = "%t %hp %dh %dc %dl %db"
+  val standardString = "%t %hp %dh %dc %dl %db %c"
   val underwaterString = "%hp %a"
 
   override def run(): Unit = {

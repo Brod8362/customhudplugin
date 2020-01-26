@@ -1,10 +1,10 @@
 package pw.byakuren.hudplugin
 
-import org.bukkit.{Bukkit, command}
-import org.bukkit.command.CommandSender
+import org.bukkit.Bukkit
+import org.bukkit.command.{Command, CommandSender}
 import org.bukkit.plugin.java.JavaPlugin
-import pw.byakuren.hudplugin.commands.{Command, ViewSegmentCommand}
-import pw.byakuren.hudplugin.segments.{AirSegment, BootsDurabilitySegment, ChestplateDurabilitySegment, CompassSegment, HUDSegment, HealthSegment, HelmetDurabilitySegment, LeggingDurabilitySegment, TimeSegment}
+import pw.byakuren.hudplugin.commands.{PluginCommand, ViewSegmentCommand}
+import pw.byakuren.hudplugin.segments._
 
 class CustomHUDPlugin extends JavaPlugin {
 
@@ -12,7 +12,7 @@ class CustomHUDPlugin extends JavaPlugin {
     new BootsDurabilitySegment, new LeggingDurabilitySegment, new ChestplateDurabilitySegment,
     new HelmetDurabilitySegment, new CompassSegment)
 
-  val commands: Seq[Command] = Seq(new ViewSegmentCommand)
+  val commands: Seq[PluginCommand] = Seq(new ViewSegmentCommand)
 
   override def onLoad(): Unit = super.onLoad()
 
@@ -23,7 +23,7 @@ class CustomHUDPlugin extends JavaPlugin {
     Bukkit.getScheduler.scheduleSyncRepeatingTask(this, new HUDUpdater(), 20, 10)
   }
 
-  override def onCommand(sender: CommandSender, command: command.Command, label: String, args: Array[String]): Boolean = {
+  override def onCommand(sender: CommandSender, command: Command, label: String, args: Array[String]): Boolean = {
     commands.find(_.name==command.getName) match {
       case Some(cmd) => cmd.run(sender, label, args)
       case None => false
