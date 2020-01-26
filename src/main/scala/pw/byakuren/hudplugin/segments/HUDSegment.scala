@@ -11,6 +11,6 @@ trait HUDSegment {
 
   def placeholder: String
 
-  def generate(player: Player): Array[BaseComponent]
+  def generate(player: Player): Vector[BaseComponent]
 
 }
