@@ -1,3 +1,5 @@
+package pw.byakuren.hudplugin
+
 import org.bukkit.plugin.java.JavaPlugin
 
 class CustomHUDPlugin extends JavaPlugin {

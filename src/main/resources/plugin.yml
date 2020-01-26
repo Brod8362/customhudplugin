@@ -1,0 +1,5 @@
+name: CustomHUD
+main: pw.byakuren.hudplugin.CustomHUDPlugin
+description: "Create a custom hud using the actionbar!"
+author: "Brod8362"
+version: "1.0"
