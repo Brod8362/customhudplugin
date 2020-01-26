@@ -1,5 +1,6 @@
 package pw.byakuren.hudplugin.segments
 
+import net.md_5.bungee.api.chat.BaseComponent
 import org.bukkit.entity.Player
 
 trait HUDSegment {
@@ -8,6 +9,6 @@ trait HUDSegment {
 
   def placeholder: String
 
-  def generate(player: Player): String
+  def generate(player: Player): Array[BaseComponent]
 
 }
