@@ -2,11 +2,11 @@ package pw.byakuren.hudplugin
 
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
-import pw.byakuren.hudplugin.segments.{HUDSegment, HealthSegment, TimeSegment}
+import pw.byakuren.hudplugin.segments.{AirSegment, HUDSegment, HealthSegment, TimeSegment}
 
 class CustomHUDPlugin extends JavaPlugin {
 
-  implicit val segments: Seq[HUDSegment] = Seq(new HealthSegment(), new TimeSegment())
+  implicit val segments: Seq[HUDSegment] = Seq(new HealthSegment, new TimeSegment, new AirSegment)
 
   override def onLoad(): Unit = super.onLoad()
 

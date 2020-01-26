@@ -17,8 +17,8 @@ object PlayerState {
 
   implicit class GetPlayerState(player: Player) {
     def playerState: PlayerState = {
-      if (player.isSwimming) return PlayerState.Swimming
       val location = player.getLocation
+      if (player.getWorld.getBlockAt(player.getEyeLocation).isLiquid) return PlayerState.Swimming
       if (location.getY-player.getWorld.getHighestBlockYAt(location)>5) return PlayerState.Flying
       //TODO combat
       PlayerState.Standard
