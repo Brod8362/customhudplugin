@@ -10,7 +10,7 @@ class HealthSegment extends HUDSegment {
   override def placeholder: String = "%hp"
 
   override def generate(player: Player): Vector[BaseComponent] = {
-    val hp = Math.round(player.getHealth)
+    val hp = Math.ceil(player.getHealth).toInt
     new ComponentBuilder(s"❤$hp").color(ChatColor.RED).create().toVector
   }
 }
