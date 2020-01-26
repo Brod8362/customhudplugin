@@ -16,7 +16,7 @@ class CustomHUDPlugin extends JavaPlugin {
   implicit val segments: Seq[HUDSegment] = Seq(new HealthSegment, new TimeSegment, new AirSegment,
     new BootsDurabilitySegment, new LeggingDurabilitySegment, new ChestplateDurabilitySegment,
     new HelmetDurabilitySegment, new CompassSegment, new XPosSegment, new YPosSegment, new ZPosSegment,
-    new XPLevelSegment, new XPSegment, new BiomeSegment)
+    new XPLevelSegment, new XPSegment, new BiomeSegment, new ArrowSegment)
 
   implicit val players: PlayerHUDContainer = new PlayerHUDContainer
 

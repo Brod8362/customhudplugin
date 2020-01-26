@@ -1,5 +1,6 @@
 package pw.byakuren.hudplugin.users
 
+import org.bukkit.Material
 import org.bukkit.entity.Player
 
 
@@ -9,7 +10,7 @@ sealed trait PlayerState {
 
 object PlayerState {
 
-  val states = Seq(Standard, Swimming, Combat, Flying)
+  val states = Seq(Standard, Swimming, Combat, Flying, Archery)
 
   case object Standard extends PlayerState {
     def name = "standard"
@@ -27,6 +28,10 @@ object PlayerState {
     def name = "flying"
   }
 
+  case object Archery extends PlayerState {
+    def name = "archery"
+  }
+
   def fromString(str: String): Option[PlayerState] = {
     states.find(_.name==str)
   }
@@ -35,9 +40,13 @@ object PlayerState {
     def playerState(playerHUDs: PlayerHUDContainer): PlayerState = {
       val location = player.getLocation
       val currentTime = player.getWorld.getFullTime
+      val heldItem = Option(player.getInventory.getItemInMainHand)
       if (currentTime-playerHUDs(player).lastDamaged<100) return PlayerState.Combat
       if (player.getWorld.getBlockAt(player.getEyeLocation).isLiquid) return PlayerState.Swimming
       if (location.getY-player.getWorld.getHighestBlockYAt(location)>5) return PlayerState.Flying
+      for (item <- heldItem) {
+        if (item.getType==Material.BOW || item.getType==Material.CROSSBOW) return PlayerState.Archery
+      }
       PlayerState.Standard
     }
   }
