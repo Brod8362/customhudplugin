@@ -16,7 +16,7 @@ class CompassSegment extends HUDSegment {
         compassString.charAt(i % 20) match {
           case 'N' => "§cN§r"
           case 'S' => "§9S§r"
-          case 'E' | 'W' | '-' => compassString.charAt(i%20).toString
+          case a => a
         }
       }
     }

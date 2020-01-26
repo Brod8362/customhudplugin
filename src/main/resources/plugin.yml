@@ -8,3 +8,6 @@ commands:
   segments:
     description: View available segments and their placeholders.
     usage: /segments
+  setformat:
+    description: Set format for your HUD.
+    usage: /setformat [state] [format]

@@ -2,9 +2,14 @@ package pw.byakuren.hudplugin
 
 import org.bukkit.Bukkit
 import org.bukkit.command.{Command, CommandSender}
+import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
-import pw.byakuren.hudplugin.commands.{PluginCommand, ViewSegmentCommand}
+import pw.byakuren.hudplugin.commands.{PluginCommand, SetFormatCommand, ViewSegmentCommand}
+import pw.byakuren.hudplugin.listeners.PlayerDamageListener
 import pw.byakuren.hudplugin.segments._
+import pw.byakuren.hudplugin.users.{PlayerHUD, PlayerHUDContainer}
+
+import scala.collection.mutable
 
 class CustomHUDPlugin extends JavaPlugin {
 
@@ -12,7 +17,9 @@ class CustomHUDPlugin extends JavaPlugin {
     new BootsDurabilitySegment, new LeggingDurabilitySegment, new ChestplateDurabilitySegment,
     new HelmetDurabilitySegment, new CompassSegment)
 
-  val commands: Seq[PluginCommand] = Seq(new ViewSegmentCommand)
+  implicit val players: PlayerHUDContainer = new PlayerHUDContainer
+
+  val commands: Seq[PluginCommand] = Seq(new ViewSegmentCommand, new SetFormatCommand)
 
   override def onLoad(): Unit = super.onLoad()
 
@@ -20,6 +27,7 @@ class CustomHUDPlugin extends JavaPlugin {
   }
 
   override def onEnable(): Unit = {
+    getServer.getPluginManager.registerEvents(new PlayerDamageListener, this)
     Bukkit.getScheduler.scheduleSyncRepeatingTask(this, new HUDUpdater(), 20, 10)
   }
 
@@ -29,5 +37,7 @@ class CustomHUDPlugin extends JavaPlugin {
       case None => false
     }
   }
+
+
 
 }
