@@ -15,12 +15,12 @@ class HUDUpdater(implicit segments: Seq[HUDSegment], playerHUDs: PlayerHUDContai
     for (player <- Bukkit.getOnlinePlayers.asScala) {
       playerHUDs(player)(player.playerState(playerHUDs)) match {
         case Some(formatString) =>
-          val vectors: Array[Vector[BaseComponent]] = for (group <- formatString.split(" ")) yield {
+          val vectors: Array[Vector[BaseComponent]] = for (group <- formatString.replace("&", "§").split(" ")) yield {
             segments.find(_.placeholder == group) match {
               case Some(segment) =>
                 segment.generate(player)
               case None =>
-                new ComponentBuilder(group + " ").create().toVector
+                new ComponentBuilder(s" $group ").create().toVector
             }
           }
           player.spigot().sendMessage(ChatMessageType.ACTION_BAR, vectors.flatten: _*)
