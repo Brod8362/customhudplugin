@@ -1,5 +1,7 @@
 package pw.byakuren.hudplugin.segments
 
+import java.awt.TextComponent
+
 import net.md_5.bungee.api.chat.BaseComponent
 import org.bukkit.entity.Player
 
