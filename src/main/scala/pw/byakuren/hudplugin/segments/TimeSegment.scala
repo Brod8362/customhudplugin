@@ -9,7 +9,7 @@ class TimeSegment extends HUDSegment  {
   override def placeholder: String = "%t"
 
   override def generate(player: Player): Vector[BaseComponent] = {
-    new ComponentBuilder(f"${player.getWorld.getTime/1000}:" +
+    new ComponentBuilder(f"${(player.getWorld.getTime/1000+6)%24}:" +
       f"${Math.floor(((player.getWorld.getTime%1000)/1000.0)*60)}%02.0f").create().toVector
   }
 }
