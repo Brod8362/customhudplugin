@@ -3,3 +3,8 @@ main: pw.byakuren.hudplugin.CustomHUDPlugin
 description: "Create a custom hud using the actionbar!"
 author: "Brod8362"
 version: "1.0"
+
+commands:
+  segments:
+    description: View available segments and their placeholders.
+    usage: /segments
