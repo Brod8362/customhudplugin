@@ -11,7 +11,7 @@ trait DurabilitySegment extends HUDSegment {
   private val emptySegment = "▯"
 
   final def createDurabilityBar(damage: Int, capacity: Int, segments: Int): String = {
-    val full = (((capacity-damage)/capacity.toDouble)*segments).toInt
+    val full = Math.round(((capacity-damage)/capacity.toDouble)*segments).toInt
     (fullSegment*full)+(emptySegment*(segments-full))
   }
 
