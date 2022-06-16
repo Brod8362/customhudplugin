@@ -10,7 +10,7 @@ class ViewSegmentCommand(implicit val segments: Seq[HUDSegment]) extends PluginC
     val str = for (segment <- segments) yield {
       s"${segment.placeholder} - ${segment.name}"
     }
-    sender.sendMessage(str.toArray)
+    sender.sendMessage(str.toArray:_*)
     true
   }
 }
