@@ -2,6 +2,7 @@ package pw.byakuren.hudplugin
 
 import org.bukkit.Bukkit
 import org.bukkit.command.{Command, CommandSender}
+import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 import pw.byakuren.hudplugin.commands.{PluginCommand, SetFormatCommand, ViewSegmentCommand}
@@ -17,6 +18,8 @@ class CustomHUDPlugin extends JavaPlugin {
     new BootsDurabilitySegment, new LeggingDurabilitySegment, new ChestplateDurabilitySegment,
     new HelmetDurabilitySegment, new CompassSegment, new XPosSegment, new YPosSegment, new ZPosSegment,
     new XPLevelSegment, new XPSegment, new BiomeSegment, new ArrowSegment)
+
+  implicit val config: FileConfiguration = getConfig
 
   implicit val players: PlayerHUDContainer = new PlayerHUDContainer
 

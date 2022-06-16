@@ -1,12 +1,13 @@
 package pw.byakuren.hudplugin.users
 
-import java.util.UUID
+import org.bukkit.configuration.file.FileConfiguration
 
+import java.util.UUID
 import org.bukkit.entity.Player
 
 import scala.collection.mutable
 
-class PlayerHUDContainer {
+class PlayerHUDContainer(implicit config: FileConfiguration) {
 
   private val data = new mutable.HashMap[UUID, PlayerHUD]
 

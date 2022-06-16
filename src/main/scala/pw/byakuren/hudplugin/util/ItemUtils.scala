@@ -24,6 +24,8 @@ object ItemUtils {
           ChatColor.GRAY
         case Material.GOLDEN_BOOTS | Material.GOLDEN_LEGGINGS | Material.GOLDEN_CHESTPLATE | Material.GOLDEN_HELMET =>
           ChatColor.YELLOW
+        case Material.NETHERITE_BOOTS | Material.NETHERITE_LEGGINGS | Material.NETHERITE_CHESTPLATE | Material.NETHERITE_HELMET =>
+          ChatColor.BLACK
         case _ => ChatColor.WHITE
       }
     }
